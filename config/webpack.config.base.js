@@ -108,7 +108,7 @@ module.exports = {
         // 将 css 抽取到某个文件夹
 //      new ExtractTextPlugin(config.cssOutputPath),
  		new ExtractTextPlugin({
-            filename: 'css/[name].[chunkhash].css',
+            filename: 'css/[name].[contenthash].css',
             allChunks: true
      	}), 
         // 自动生成 HTML 插件
