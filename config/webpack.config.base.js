@@ -1,12 +1,13 @@
 const path = require("path");
 const webpack = require("webpack");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-// 引入插件
+// 自动生成HTML插件
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 // 清理 dist 文件夹
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 // 抽取 css
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// 复制插件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // 引入多页面文件列表
 const config = require("./config");
 // 通过 html-webpack-plugin 生成的 HTML 集合
@@ -75,16 +76,22 @@ module.exports = {
             },
             {
                 test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use:{
-                    loader:"url-loader",
-                    options:{
-                    	limit: 10000,
-                        // 打包生成图片的名字
-                        name:"[name].[hash:7].[ext]",
-//                      // 图片的生成路径
-                        outputPath:config.imgOutputPath
-                    }
-                }
+                use:[
+	                  {
+	                    loader:"url-loader",
+	                    options:{
+	                    	limit: 10000,//表示小于10kb的图片转为base64
+	                        // 打包生成图片的名字
+	                        name:"[name].[hash:7].[ext]",
+	                        // 图片的生成路径
+	                        outputPath:config.imgOutputPath
+	                    }
+	                  },
+	                  {
+	                  	//压缩图片
+					    loader: 'image-webpack-loader'
+		   			  }
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,

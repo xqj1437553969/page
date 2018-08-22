@@ -6,6 +6,9 @@ const webpackMerge = require("webpack-merge");
 const config = require("./config");
 // 合并配置文件
 module.exports = webpackMerge(webpackBase,{
+	//cheap-module-source-map的作用
+	//如果压缩文件出现了报错，我们能够准确地定位到报错的原位置，就是找到报错在没有打包之前的未压缩的文件中的位置
+	devtool:"cheap-module-source-map",
     // 配置 webpack-dev-server
     devServer:{
         // 项目根目录
