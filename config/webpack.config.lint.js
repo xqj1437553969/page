@@ -1,3 +1,5 @@
+//js语法检查配置
+
 const webpackBase = require("./webpack.config.base");
 const webpackMerge = require("webpack-merge");
 const config = require("./config");

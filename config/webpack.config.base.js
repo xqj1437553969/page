@@ -1,3 +1,5 @@
+//开发环境和生产环境公共部分的配置
+
 const path = require("path");
 const webpack = require("webpack");
 // 自动生成HTML插件
