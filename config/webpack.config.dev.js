@@ -12,7 +12,8 @@ const config = require("./config");
 module.exports = webpackMerge(webpackBase,{
 	plugins:[
 	    //DefinePlugin 允许创建一个在编译时可以配置的全局常量。
-	    //用来区分是开发环境还是生产环境
+	    //用来区分是开发环境还是生产环境，然后根据不同的环境就可以配置不同的接口路径
+	    //全局常量具体使用是在src文件夹下的api.js文件中
     	new webpack.DefinePlugin({
   			 DEV:true
 		})
@@ -27,7 +28,7 @@ module.exports = webpackMerge(webpackBase,{
         port:8080,
         proxy: {//服务器代理
             '/api': {//url中匹配到"/api"就会把url中"/api"之前的东西全部替换成下面target中的东西
-                target: 'http://order.aichongyue.com',//测试服务器地址
+                target: 'http://order.aichongyue.com',//测试服务器地址，需要根据实际情况自行设置，比如也可设置为本地测试服务器 http://localhost:8888(8888为端口号)
                 pathRewrite:{'^/api':''},// pathRewrite重写请求，请求会将/api替换为空字符串
                 secure: false,
                 changeOrigin:true

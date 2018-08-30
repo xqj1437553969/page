@@ -107,7 +107,6 @@ module.exports = {
 //		      $: 'jquery',
 //		      jQuery: 'jquery'
 //      }),
-
         // 自动清理 dist 文件夹
         new CleanWebpackPlugin(["dist"],{
            root: path.resolve(__dirname, '../'),
