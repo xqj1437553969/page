@@ -29,7 +29,7 @@ $.ajax({
     		var imgurl = r.data.operatorList[0].activateImgUrl;
     		console.log(imgurl);//   从后台获取到的图片路径 /upload/image/cc652fc679d845ef9af9319f2d7f9f6b.jpg
  
-    		//生产环境下getImgUrl等于'/api'
+    		//开发环境下getImgUrl等于'/api'
     		//开发环境下的图片路径原来是 http://localhost:8080/api/upload/image/cc652fc679d845ef9af9319f2d7f9f6b.jpg
     		//开发环境下使用服务器代理之后图片路径转到了http://order.aichongyue.com/upload/image/cc652fc679d845ef9af9319f2d7f9f6b.jpg(测试服务器的上的正确图片路径)
     		
