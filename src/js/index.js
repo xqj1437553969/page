@@ -1,13 +1,16 @@
 import '../css/reset.css';
 import '../css/index.css';
-const {baseUrl,getImgUrl} = require("../api/api.js");//baseUrl和getImgUrl需要根据实际情况在api.js文件中进行设置
+//baseUrl和getImgUrl需要根据实际情况在api.js文件中进行设置（具体原因可以查看api文件夹下的api.js文件）
+const {baseUrl,getImgUrl} = require("../api/api.js");
 console.log(baseUrl);
 console.log(getImgUrl);
 $.ajax({
 	type:"post",
 	
-	//开发环境配置在config文件夹下webpack.config.dev.js文件，其中配置了服务器代理
-	//配置服务器代理之后转到的地址可以自行设置，此处我设置的是测试服务器http://order.aichongyue.com
+	//开发环境配置在config文件夹下webpack.config.dev.js文件，其中配置了服务器代理（解决调试接口时的跨域问题）
+	//开发环境时webpack会打开一个本地服务器http://localhost:8080（这个服务器是用来监测js、HTML、CSS并自动刷新网页）
+	//调试接口时，本地会再开启一个java服务器或者php服务器，调试接口就会存在跨域问题
+	//配置服务器代理之后转到的地址可以自行设置，此处我设置的是测试服务器http://order.aichongyue.com（这是测试服的服务器，当然也可以设置本地的java服务器或者php服务器）
 	//开发环境下baseUrl等于'/api/fuwii'
 	//开发环境下原来请求的接口路径是http://localhost:8080/api/fuwii/center/cardOperator
 	//开发环境下使用服务器代理之后接口路径转到了http://order.aichongyue.com/fuwii/center/cardOperator
